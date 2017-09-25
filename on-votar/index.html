@@ -18,7 +18,7 @@
 	<meta charset="UTF-8" />
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="pingback" href="../xmlrpc.php.html" />
+	<link rel="pingback" href="../xmlrpc.php" />
 
 		<!--[if lt IE 9]>
 	<script src="./wp-content/themes/Divi/js/html5.js" type="text/javascript"></script>
@@ -52,7 +52,7 @@
 <link rel="alternate" type="application/rss+xml" title="Referèndum 2017 &raquo; canal d&#039;informació" href="../feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="Referèndum 2017 &raquo; Canal dels comentaris" href="../comments/feed/index.html" />
 
- <script type="text/javascript" src="../js/bundleV9.js"></script>
+ <script type="text/javascript" src="../js/bundleV8.js"></script>
  <script type="text/javascript">
  function calcula() {
 	 document.querySelector("#stepLoad").style.display="inline"
@@ -71,7 +71,7 @@
    onvoto.calcular(dni.slice(-6),dn_any+dn_mes+dn_dia,cp, function(i) {
 		 document.querySelector("#stepLoad").style.display="none"
 		 if (( typeof i === 'string' ) && ( i == 'not-found' ))  {
-				 document.querySelector("#response").innerHTML = "No s'ha trobat cap registre corresponent a les dades introduïdes."
+				 document.querySelector("#response").innerHTML = "<div>No s'ha trobat cap registre corresponent a les dades introduïdes;<br/>si us plau, verifiqueu que siguin correctes.<br>El codi postal correspon a l'adreça on us trobeu empadronat/da;<br/>si heu canviat el vostre domicili després de l'elaboració del cens electoral,<br/>poden figurar-hi les dades antigues.<br>Si les vostres dades no apareixen o trobeu un error,<br/>adreceu-vos a la sindicatura electoral de la vostra demarcació.</div>"
 		 } else {
       	document.querySelector("#stepOne").style.display="none";
       	document.querySelector("#response").innerHTML = i[0] + "\n" + i[1] + "\n" + i[2] + "\n\n"
@@ -123,12 +123,12 @@ var cdp_cookies_info = {"url_plugin":"./wp-content\/plugins\/asesor-cookies-para
 </script>
 <script type='text/javascript' src='../wp-content/plugins/asesor-cookies-para-la-ley-en-espana/html/front/principal4a41.js%3Fver=4.8.2'></script>
 <link rel='https://api.w.org/' href='../wp-json/index.html' />
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php%3Frsd.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php%3Frsd" />
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../wp-includes/wlwmanifest.xml" />
 <meta name="generator" content="WordPress 4.8.2" />
 <link rel='shortlink' href='../indexfbd5.html%3Fp=42.html' />
 <link rel="alternate" type="application/json+oembed" href="../wp-json/oembed/1.0/embed91e6.json%3Furl=https%253A%252F%252Fonvotar.garantiespelreferendum.com%252Fon-votar%252F" />
-<link rel="alternate" type="text/xml+oembed" href="../wp-json/oembed/1.0/embed6f89%3Furl=https%253A%252F%252Fonvotar.garantiespelreferendum.com%252Fon-votar%252F&amp;format=xml.html" />
+<link rel="alternate" type="text/xml+oembed" href="../wp-json/oembed/1.0/embed6f89%3Furl=https%253A%252F%252Fonvotar.garantiespelreferendum.com%252Fon-votar%252F&amp;format=xml" />
 <meta name="generator" content="WPML ver:3.8.0 stt:8,38,1,2;" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><link rel="icon" href="../wp-content/uploads/2017/09/cropped-vota-32x32.png" sizes="32x32" />
 <link rel="icon" href="../wp-content/uploads/2017/09/cropped-vota-192x192.png" sizes="192x192" />
@@ -186,7 +186,7 @@ var cdp_cookies_info = {"url_plugin":"./wp-content\/plugins\/asesor-cookies-para
 			</div> <!-- .container -->
 			<div class="et_search_outer">
 				<div class="container et_search_form_container">
-					<form role="search" method="get" class="et-search-form" action="https://onvotar.garantiespelreferendum.com/on-votar/">
+					<form role="search" method="get" class="et-search-form" action="https://ipfs.infura.io/ipns/QmZxWEBJBVkGDGaKdYPQUXX4KC5TCWbvuR4iYZrTML8XCR/on-votar/">
 					<input type="search" class="et-search-field" placeholder="Search &hellip;" value="" name="s" title="Search for:" />					</form>
 					<span class="et_close_search_field"></span>
 				</div>
@@ -248,21 +248,21 @@ var cdp_cookies_info = {"url_plugin":"./wp-content\/plugins\/asesor-cookies-para
                     </style>
                     <div id="stepOne">
                     <div class="form-group" style="padding:10px">
-                            <label class="form-label" title="DNI incloent-hi lletra">DNI:</label>
-                            <input id="dni" type="text" title="Escriu el teu DNI" />
+                            <label class="form-label" title="DNI (incloent-hi la lletra)">DNI:</label>
+                            <input id="dni" type="text" title="Escriviu el vostre DNI, incloent-hi la lletra, sense punts, guionets ni espais." placeholder="01234567L" maxlength="9" />
                     </div>
 
                     <div class="form-group" style="padding:10px">
-                            <label class="form-label">Data Naixement:</label>
-                             <input id="dn_dia" type="text" size= "3" title="Escriu el dia que vas néixer" /> / <input id="dn_mes" type="text" size= "3" title="Escriu el mes que vas néixer" /> / <input id="dn_any" type="text" size= "5" title="Escriu l'any que vas néixer" />
+                            <label class="form-label">Data de naixement:</label>
+                             <input id="dn_dia" type="text" size= "3" title="Escriviu el número de dia del vostre naixement." placeholder="dd" maxlength="2"/> / <input id="dn_mes" type="text" size= "3" title="Escriviu el número de mes del vostre naixement." placeholder="mm" maxlength="2"/> / <input id="dn_any" type="text" size= "5" title="Escriviu l'any del vostre naixement." placeholder="aaaa" maxlength="4"/>
                     </div>
                     <div class="form-group" style="padding:10px">
-                            <label class="form-label">Codi Postal:</label>
-                             <input id="cp" size="5" type="text" title="Escriu el CP" />
+                            <label class="form-label">Codi postal:</label>
+                             <input id="cp" size="5" type="text" title="Escriviu el codi postal del domicili on us trobeu empadronat/da." placeholder="01234" maxlength="5"/>
                     </div>
 
                     <div class="form-group" style="padding:10px">
-                        <button onclick="calcula()" id="calcula">Cerca la teva mesa electoral</button>
+                        <button onclick="calcula()" id="calcula">Cerca la meva mesa electoral</button>
 												<span id="stepLoad" style="display:none;">
 														<img src="../wp-content/uploads/2017/09/loading_icon.gif" width="25px" height="25px"/>
 												</span>
@@ -272,7 +272,8 @@ var cdp_cookies_info = {"url_plugin":"./wp-content\/plugins\/asesor-cookies-para
                 </div>
 
 <div id="stepTwo">
- <pre id="response"> </pre>
+ <pre id="response">
+ </pre>
  </div>
 
 				</div>
